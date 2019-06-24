@@ -5,7 +5,7 @@ const ASSET_ROOT = './assets/green-character'
 const character = document.createElement('img')
 
 // Make the character a little bigger
-character.style.width = '75px'
+character.style.width = '100px'
 
 // Position the character absolutely in the lower left corner of the screen
 character.style.position = 'absolute'
@@ -37,12 +37,22 @@ setInterval(function(){
     if(direction == 'right'){
         character.style.left = `${left+speed}px`
     }
+    else if (direction == 'left') {
+        character.style.left =  `${left-speed}px`
+
+    }
+    else if (direction == 'up') {
+        character.style.bottom = `${bottom+speed}`
+    }
+    else if (direction == 'down') {
+      character.style.bottom = `${bottom-speed}`
+    }
 
     // Account for other directions here:
 
 }, 20) // <- What is this number?
 
-// When we want to start walking a given direction, let's change: 
+// When we want to start walking a given direction, let's change:
 //  1. The characters gif.
 //  2. The value of the direction variable. How will this effect the setInterval loop above?
 function walkRight(){
@@ -54,14 +64,18 @@ function walkRight(){
 // Finish the functions below:
 
 function walkLeft(){
-
+character.src = `${ASSET_ROOT}/walkleft.gif`
+direction = 'left'
 }
 
 function walkUp(){
-
+  character.src = `${ASSET_ROOT}/walkup.gif`
+direction = 'up'
 }
 
 function walkDown(){
+  character.src = `${ASSET_ROOT}/walkdown.gif`
+  direction = 'down'
 
 }
 
